@@ -17,15 +17,15 @@
         <div class="col-sm-5">
           <div class="form-group">
             <label for="unidadeEmp">Gestão:</label>
-              <select class="form-control" id="gestaoEmp" formControlName="gestao_emp">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </select>
+            <input class="form-control" 
+              type="text"  
+              id="gestaoEmp" 
+              disabled="true"
+              formControlName="gestao_emp">
           </div>
         </div>
+
+        <!-- Gestão > output e não input -->
 
         <div class="col-sm-4 col-sm-offset-1">
           <div class="form-group">
@@ -42,7 +42,7 @@
       </div>
     </div>
 
-    <div class="row">
+    <!-- <div class="row">
       <div class="col-sm-5">
         <div class="form-group alinha-col">
           <label for="eventoEmp">Evento:</label>
@@ -52,8 +52,11 @@
           placeholder="Evento" 
           formControlName="evento">
         </div>
+
       </div>
-    </div>
+    </div> -->
+
+    <!-- Evento removido -->
 
 <div class="row">
 <div class="col-md-12">
@@ -259,6 +262,66 @@
           </div>
         </div>
       </div>
+      <h3> Grupo de Natureza de Despesa </h3>
+      <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-10 borda">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label class="radio-inline">
+                  <input type="radio"
+                    id="pessoal" name="pessoal">  Pessoal (P)
+                </label>
+                
+               
+                <label class="radio-inline">
+                  <input type="radio"
+                    id="equips" name="equips">  Equipamentos (E)
+                </label>
+                
+                
+                <label class="radio-inline">
+                  <input type="radio"
+                    id="amorte" name="amorte">  Amortização (A)
+                </label>
+                
+
+                
+                <label class="radio-inline">
+                  <input type="radio"
+                    id="todas" name="todas">  Todas
+                </label>
+              </div>
+            </div>
+          </div>
+          </div>
+          <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+              <label class="radio-inline">
+                <input type="radio"
+                  id="outras" name="outras">  Outras despesas correntes (C)
+              </label>
+              <label class="radio-inline">
+                <input type="radio"
+                  id="invFinanc" name="invFinanc">  Inversões Financeiras (I)
+              </label>
+            
+              <label class="radio-inline">
+                <input type="radio"
+                  id="outros" name="outros">  Outros (X)
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+    <br>
 
     <div class="row">
       <div class="col-sm-12">
@@ -720,113 +783,10 @@
         
       </div>
     </div>
-
+  <!-- Trocar passo quatro com passo cinco -->
   </wizard-step>
+  
   <wizard-step title="Passo 4">
-  <collapsible-panel title="Parcelas">
-    <div class="container-fluid">  
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="col-sm-3">
-            <div class="form-group col-sm-10">
-              <label for="valorNeEmp"> VALOR DA NE:
-              </label>
-                <input class="form-control" 
-                  type="text"
-                  disabled="true" 
-                  id="valorNeEmp" 
-                  value="{{empenhoForm.controls['item'].controls['valor_ne'].value}}">
-            </div>
-          </div>
-
-          <div class="col-sm-3">
-            <div class="form-group col-sm-10">
-              <label for="numParcEmp">Nº PARCELAS:
-              </label>
-                <input class="form-control" 
-                  type="text"
-                  disabled="true" 
-                  id="numParcEmp" 
-                  value="{{total_parcelas}}">
-            </div>
-          </div>
-          <div class="col-sm-3">
-            <div class="form-group col-sm-10">
-              <label for="totalParcEmp"> TOTAL PARCELAS:
-              </label>
-              <input class="form-control" 
-                type="text" 
-                disabled="true" 
-                id="totalParcEmp" 
-                value="{{empenhoForm.controls['total_parcelas'].value}}">
-            </div>
-          </div>
-
-          <div class="col-sm-3">
-            <div class="form-group col-sm-10">
-              <label for="restanteEmp"> RESTANTE:
-              </label>
-                <input class="form-control" 
-                  type="text"  
-                  disabled="true" 
-                  id="restanteEmp" 
-                  value="{{empenhoForm.controls['item'].controls['restante'].value}}">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </collapsible-panel>
-  <div class="container">
-  <div class="panel panel-primary">
-  <div class="panel-heading"></div>
-  <div class="panel-body"> 
-      <table id="mytable" class="table table-bordered table-striped">
-                       
-        <thead>
-          <th>-X-</th>
-          <th>Mês</th>
-          <th>Valor</th>
-          
-        </thead>
-        <tbody formArrayName="parcelas" *ngFor="let parcela of empenhoForm.controls['parcelas'].controls; let i = index " >
-          
-          <tr formGroupName="{{i}}">
-            <td><input type="checkbox"(change)="editaValor(i, parcela)" class="checkthis" /></td>
-            <td>{{meses[i]}}</td>
-            <input class="form-control" 
-              type="text"
-              id="valorParc"
-              (change)="acrescentaTotalParcelas(parcela)"
-              formControlName="valor"
-             >
-          </tr>
-
-        </tbody>
-            
-      </table>
- 
-    </div>
-    </div>
-    </div>
-
-    <div class="row">
-      <div class="col-sm-12 col-sm-offset-3">
-        <div class="col-sm-4">
-          
-          <button type="button" class="btn btn-warning" previousStep>Anterior</button>
-        </div>
-        
-        <div class="col-sm-4">
-          
-          <button type="button" class="btn btn-primary" nextStep>Próximo</button>
-        </div>
-        
-      </div>
-    </div>
-   
-  </wizard-step>
-  <wizard-step title="Passo 5">
     <collapsible-panel title="Discriminação">
       <div class="container-fluid" formGroupName="discriminacao"> 
         <div class="row">
@@ -1025,12 +985,119 @@
         
         <div class="col-sm-4">
           
-          <button type="button" class="btn btn-success">Gerar Empenho</button>
+          <button type="button" class="btn btn-primary" nextStep>Próximo</button>
         </div>
         
       </div>
     </div>
   </wizard-step>
+
+  <wizard-step title="Passo 5">
+  <collapsible-panel title="Parcelas">
+    <div class="container-fluid">  
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="col-sm-3">
+            <div class="form-group col-sm-10">
+              <label for="valorNeEmp"> VALOR DA NE:
+              </label>
+                <input class="form-control" 
+                  type="text"
+                  disabled="true" 
+                  id="valorNeEmp" 
+                  value="{{empenhoForm.controls['item'].controls['valor_ne'].value}}">
+            </div>
+          </div>
+
+          <div class="col-sm-3">
+            <div class="form-group col-sm-10">
+              <label for="numParcEmp">Nº PARCELAS:
+              </label>
+                <input class="form-control" 
+                  type="text"
+                  disabled="true" 
+                  id="numParcEmp" 
+                  value="{{total_parcelas}}">
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="form-group col-sm-10">
+              <label for="totalParcEmp"> TOTAL PARCELAS:
+              </label>
+              <input class="form-control" 
+                type="text" 
+                disabled="true" 
+                id="totalParcEmp" 
+                value="{{empenhoForm.controls['total_parcelas'].value}}">
+            </div>
+          </div>
+
+          <div class="col-sm-3">
+            <div class="form-group col-sm-10">
+              <label for="restanteEmp"> RESTANTE:
+              </label>
+                <input class="form-control" 
+                  type="text"  
+                  disabled="true" 
+                  id="restanteEmp" 
+                  value="{{empenhoForm.controls['item'].controls['restante'].value}}">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </collapsible-panel>
+  <div class="container">
+  <div class="panel panel-primary">
+  <div class="panel-heading"></div>
+  <div class="panel-body"> 
+      <table id="mytable" class="table table-bordered table-striped">
+                       
+        <thead>
+          <th>-X-</th>
+          <th>Mês</th>
+          <th>Valor</th>
+          
+        </thead>
+        <tbody formArrayName="parcelas" *ngFor="let parcela of empenhoForm.controls['parcelas'].controls; let i = index " >
+          
+          <tr formGroupName="{{i}}">
+            <td><input type="checkbox"(change)="editaValor(i, parcela)" class="checkthis" /></td>
+            <td>{{meses[i]}}</td>
+            <input class="form-control" 
+              type="text"
+              id="valorParc"
+              (change)="acrescentaTotalParcelas(parcela)"
+              formControlName="valor"
+             >
+          </tr>
+
+        </tbody>
+            
+      </table>
+ 
+    </div>
+    </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12 col-sm-offset-3">
+        <div class="col-sm-4">
+          
+          <button type="button" class="btn btn-warning" previousStep>Anterior</button>
+        </div>
+        
+        
+        <div class="col-sm-4">
+          
+          <button type="button" class="btn btn-success">Gerar Empenho</button>
+        </div>
+        
+      </div>
+    </div>
+   
+  </wizard-step>
+
 </div>
 </wizard>
 </form>
