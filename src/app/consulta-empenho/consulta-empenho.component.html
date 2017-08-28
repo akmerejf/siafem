@@ -17,6 +17,7 @@
         <div class="col-sm-5">
           <div class="form-group">
             <label for="unidadeEmp">Gestão:</label>
+
             <input class="form-control" 
               type="text"  
               id="gestaoEmp" 
@@ -200,14 +201,13 @@
       <!-- Início Empenho>Orçamentário Form -->
    
   <collapsible-panel title="Orçamentário" >
-    <div class="container" formGroupName="orcamentario">
+    <div class="container-fluid" formGroupName="orcamentario">
       <div class="row">
-        <div class="col-sm-8">
-          <div class="col-sm-6">
+          <div class="col-sm-4">
             <div class="form-group">
               <label for="ptResumidoOrc"> PT Resumido:
               </label>
-              <input class="form-control form-control-inline" 
+              <input class="form-control" 
                 type="text"  
                 id="ptResumidoOrc" 
                 placeholder="166848" 
@@ -217,11 +217,10 @@
           
           <div class="col-sm-2">
             <div class="form-group">
-              <button class="btn btn-default">Buscar Orçamenário</button>
+              <button class="btn btn-default alinhaBtn">Buscar Orçamenário</button>
             </div>
           </div>
-        </div>
-      </div>
+         </div>
       
       <div class="row">
         <div class="col-sm-12">
@@ -262,70 +261,46 @@
           </div>
         </div>
       </div>
-      <h3> Grupo de Natureza de Despesa </h3>
-      <div class="container-fluid">
+      
+
       <div class="row">
-        <div class="col-sm-10 borda">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="form-group">
-                <label class="radio-inline">
-                  <input type="radio"
-                    id="pessoal" name="pessoal">  Pessoal (P)
-                </label>
-                
-               
-                <label class="radio-inline">
-                  <input type="radio"
-                    id="equips" name="equips">  Equipamentos (E)
-                </label>
-                
-                
-                <label class="radio-inline">
-                  <input type="radio"
-                    id="amorte" name="amorte">  Amortização (A)
-                </label>
-                
-
-                
-                <label class="radio-inline">
-                  <input type="radio"
-                    id="todas" name="todas">  Todas
-                </label>
-              </div>
-            </div>
+        <div class="form-group">
+          <div class="col-sm-3">
+            <label for="gpNaturezaDespesa"> Grupo de Natureza de Despesa:
+            </label>
           </div>
-          </div>
-          <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="form-group">
-              <label class="radio-inline">
-                <input type="radio"
-                  id="outras" name="outras">  Outras despesas correntes (C)
-              </label>
-              <label class="radio-inline">
-                <input type="radio"
-                  id="invFinanc" name="invFinanc">  Inversões Financeiras (I)
-              </label>
-            
-              <label class="radio-inline">
-                <input type="radio"
-                  id="outros" name="outros">  Outros (X)
-              </label>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
-    </div>
-    <br>
-
+        <div class="col-sm-12">
+ 
+          <div class="borda">
+          <label class="radio-inline">
+            <input type="radio" id="p" name="quality[24]" value="pessoal" checked="checked" /> Pessoal (P)
+          </label> 
+          <label class="radio-inline">
+            <input type="radio" id="e" name="quality[24]"  value="equipamento" /> 
+            Equipamento (E)
+          </label>
+          <label class="radio-inline">
+            <input type="radio" id="a" name="quality[24]" value="amortizacao" /> 
+            Amortização (A)
+          </label>
+          <label class="radio-inline">
+             <input type="radio" id="todas" name="quality[24]" value="todas" /> Todas
+          </label>
+          <label class="radio-inline">
+            <input type="radio" id="c" name="quality[24]" value="desp_correntes" />Outras Despesas Correntes (C)
+          </label>
+          <label class="radio-inline">
+            <input type="radio" id="i" name="quality[24]" value="inv_financeiras" /> Inversões Financeiras (I)
+          </label>
+          <label class="radio-inline">
+            <input type="radio" id="x" name="quality[24]" value="outros" /> Outros (X)
+          </label>
+          </div> <!-- borda -->
+        </div>  <!-- col-sm-12 -->
+        </div> <!-- form group -->
+      </div> <!-- row -->
     <div class="row">
-      <div class="col-sm-12">
-          <div class="col-sm-4">
+        <div class="col-sm-4">
             <div class="form-group">
               <label for="planoInternoOrc"> Plano interno:
               </label>
@@ -350,10 +325,8 @@
             </div>
           </div>
         </div>
-      </div>
-
+  
       <div class="row">
-        <div class="col-sm-12">
           <div class="col-sm-4">
             <div class="form-group">
               <label for="naturezaDespesaOrc"> Natureza da Despesa:
@@ -379,12 +352,10 @@
                 placeholder="OUTROS SERV. TERC. PJ-OP.INTRA ORCAMENTARIA" >
             </div>
           </div>
-        </div>
       </div>
     
 
      <div class="row">
-      <div class="col-sm-12">
         <div class="col-sm-4">
           <div class="form-group">  
             <label for="fonteRecursoOrc"> Fonte de Recurso:
@@ -410,10 +381,8 @@
               placeholder="RECURSOS PROPRIOS" >
           </div>
         </div>
-      </div>
     </div>
     <div class="row">
-      <div class="col-sm-12">
         <div class="col-sm-4 col-sm-offset-1">
           <div class="form-group">
             <label for="valorOrc"> Valor:
@@ -425,12 +394,12 @@
                 formControlName="valor">
           </div>
         </div>
-        <div class="col-sm-4">
+       <!--  <div class="col-sm-4">
           <div class="form-group">
             <button class="btn btn-default">Verificar Disponibilidade</button>
           </div>
-        </div>
-      </div>
+        </div> -->
+
     </div>
   </div>
   </collapsible-panel>
@@ -611,7 +580,7 @@
       
       <div class="col-sm-4">
         
-        <button type="button" class="btn btn-primary" [disabled]="!empenhoForm.get('complementar').valid" nextStep>Próximo</button>
+        <button type="button" class="btn btn-primary" (click)="addSubitens()" [disabled]="!empenhoForm.get('complementar').valid" nextStep>Próximo</button>
       </div>
       
     </div>
@@ -668,75 +637,45 @@
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="col-sm-4">
-                <div class="form-group col-sm-10">
-                  <label for="codigoItem"> Código:
-                  </label>
-                    <select class="form-control" id="codigoItem" formControlName="codigo">
-                      <option>68- RESTITUIÇÕES DIVERSAS</option>
-                      <option>68- RESTITUIÇÕES DIVERSAS</option>
-                      <option>68- RESTITUIÇÕES DIVERSAS</option>
-                      <option>68- RESTITUIÇÕES DIVERSAS</option>
-                      <option>68- RESTITUIÇÕES DIVERSAS</option>
-                    </select>
-                </div>
-              </div>
-              <div class="col-sm-4">
-                <div class="form-group col-sm-10">
-                  <label for="valorItem"> Valor:
-                  </label>
-                    <input class="form-control" 
-                      type="text"  
-                      id="valorItem" 
-                      placeholder="154.283,69" 
-                      formControlName="valor">
-              </div>
-            </div>
-            <!-- <div class="col-sm-2">
-              <div class="form-group">
-                <button class="btn btn-default alinhaBtn" data-title="Validar">Validar</button>
-              </div>
-            </div> -->
-            <div class="col-sm-2">
-              <div class="form-group">
-                <button class="btn btn-success alinhaBtn" data-title="Add" (click)="addSubItem(empenhoForm.get('item'))"><span class="glyphicon glyphicon-plus"></span></button>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
-    </collapsible-panel>
-    <div class="container">
+    <!-- Nova Tabela -->
+    <div class="container-fluid">
       <div class="panel panel-primary">
-      
-        <div class="panel-body">    
-          <table id="mytable" class="table table-bordered table-striped col-md-12">
+      <div class="panel-heading"></div>
+        <div class="panel-body" formGroupName="item">
+          <table id="mytable"  class="table table-bordered table-striped">
                            
             <thead>
-              <th>Sales ID</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Designation</th>
-              <th>Mobile Numberl</th>
-              <th>Editar</th>
-              <th>Deletar</th>
+              <tr>
+                <th>X</th>
+                <th>Código</th>
+                <th>Descrição</th>
+                <th>Valor</th>
+                
+              </tr>  
             </thead>
             <tbody formArrayName="subitens" *ngFor="let subitem of formSubitens.controls; let i = index " >
               
               <tr formGroupName="{{i}}">
-                  <td>Mohsin</td>
-                  <td>{{item.controls['valor_ne'].value}}</td>
-                  <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
-                  <td>isometric.mohsin@gmail.com</td>
-                  <td>+923335586757</td>
+                  <td><input type="checkbox" (change)="editaValorSubitem(i, subitem)" class="checkthis" /></td>
+                  <td>{{(7+1)*(2+i)}}</td>
+                  <!-- <td> {{subitem.controls['codigo_subitem'].value}} </td> -->
+                  <td><input class="form-control" 
+                    type="text"
+                    id="descSubitem"
+                    
+                    formControlName="descricao"
+                   ></td>
+                  <td><input class="form-control" 
+                    type="text"
+                    id="valorSubitem"
+                    formControlName="valor_subitem"
+                   ></td>
                   
-                  <td><button class="btn btn-primary btn-xs" data-title="Editar" data-toggle="modal" data-target="#edit" (click)="editItem()" ><span class="glyphicon glyphicon-pencil"></span></button></td>
+                  <td><button *ngIf="!check_subitem[i].value" class="btn btn-primary alinhaBtn" (click)="editaValorSubitem(i, subitem)"><span class="glyphicon glyphicon-edit"></span></button></td>
+                  <!-- <td><button *ngIf="check_subitem[i].value" class="btn btn-success alinhaBtn" (click)="editaValorSubitem(i, subitem)"><span class="glyphicon glyphicon-edit"></span></button></td> -->
 
-                  <td><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" (click)="removeSubItem()" ><span class="glyphicon glyphicon-trash"></span></button></td>
-
-                  
+                 
 
               <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
                 <div class="modal-dialog">
@@ -760,15 +699,12 @@
                 <!-- /.modal-dialog --> 
               </div>
               </tr>
-
             </tbody>
-                
           </table>
-          
         </div>
       </div>
     </div>
-
+    </collapsible-panel>
     <div class="row">
       <div class="col-sm-12 col-sm-offset-3">
         <div class="col-sm-4">
@@ -778,7 +714,7 @@
         
         <div class="col-sm-4">
           
-          <button type="button" class="btn btn-primary" (click)="addParcelas()" [disabled]="!empenhoForm.get('subitens').valid"  nextStep>Próximo</button>
+          <button type="button" class="btn btn-primary" (click)="addParcelas()" [disabled]="!empenhoForm.get('item').get('subitens').valid"  nextStep>Próximo</button>
         </div>
         
       </div>
@@ -914,66 +850,61 @@
         </div>
       </div>
     </collapsible-panel>
-    
-
-    
 
   <div class="container">
-  <div class="panel panel-primary">
-  <div class="panel-heading"></div>
-  <div class="panel-body" formGroupName="discriminacao">
-      <table id="mytable" class="table table-bordered table-striped">
+    <div class="panel panel-primary">
+      <div class="panel-heading"></div>
+        <div class="panel-body" formGroupName="discriminacao">
+          <table id="mytable" class="table table-bordered table-striped">
+                           
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Unid. Medida</th>
+                <th>QTD</th>
+                <th>Valor Unitário</th>
+                <th>Valor Total</th>
+                <th>Descrição</th>
+              </tr>  
+            </thead>
+            <tbody formArrayName="itens" *ngFor="let item of formItens.controls; let i = index " >
+              
+              <tr formGroupName="{{i}}">
+                  <td>{{i+1}}</td>
+                  <td> {{item.controls['unidade_medida'].value}} </td>
+                  <td>{{item.controls['quantidade'].value}}</td>
+                  <td>{{item.controls['valor_unitario'].value}}</td>
+                  <td>{{item.controls['valor_total'].value}}</td>
+                  <td>{{item.controls['descricao'].value}}</td>
+
+                  <td><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" (click)="removeItem()" ><span class="glyphicon glyphicon-trash"></span></button></td>
+
+              <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                      <h4 class="modal-title custom_align" id="Heading">Delete this entry</h4>
+                    </div>
+                    <div class="modal-body">
                        
-        <thead>
-          <tr>
-            <th>Item</th>
-            <th>Unid. Medida</th>
-            <th>QTD</th>
-            <th>Valor Unitário</th>
-            <th>Valor Total</th>
-            <th>Descrição</th>
-          </tr>  
-        </thead>
-        <tbody formArrayName="itens" *ngFor="let item of formItens.controls; let i = index " >
-          
-          <tr formGroupName="{{i}}">
-              <td>{{i+1}}</td>
-              <td> {{item.controls['unidade_medida'].value}} </td>
-              <td>{{item.controls['quantidade'].value}}</td>
-              <td>{{item.controls['valor_unitario'].value}}</td>
-              <td>{{item.controls['valor_total'].value}}</td>
-              <td>{{item.controls['descricao'].value}}</td>
-
-              <td><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" (click)="removeItem()" ><span class="glyphicon glyphicon-trash"></span></button></td>
-
-          <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-                  <h4 class="modal-title custom_align" id="Heading">Delete this entry</h4>
-                </div>
-                <div class="modal-body">
-                   
-                  <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Tem certeza que deseja remover este item?</div>
-                   
-                </div>
-                  <div class="modal-footer ">
-                    <button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+                      <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Tem certeza que deseja remover este item?</div>
+                       
+                    </div>
+                      <div class="modal-footer ">
+                        <button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+                      </div>
                   </div>
+                    <!-- /.modal-content --> 
+                </div>
+                <!-- /.modal-dialog --> 
               </div>
-                <!-- /.modal-content --> 
-            </div>
-            <!-- /.modal-dialog --> 
-          </div>
-          </tr>
-
-        </tbody>
-            
-      </table>
-    </div>
-    </div>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
 
     <div class="row">
@@ -992,7 +923,7 @@
     </div>
   </wizard-step>
 
-  <wizard-step title="Passo 5">
+ <wizard-step title="Passo 5">
   <collapsible-panel title="Parcelas">
     <div class="container-fluid">  
       <div class="row">
@@ -1062,7 +993,7 @@
         <tbody formArrayName="parcelas" *ngFor="let parcela of empenhoForm.controls['parcelas'].controls; let i = index " >
           
           <tr formGroupName="{{i}}">
-            <td><input type="checkbox"(change)="editaValor(i, parcela)" class="checkthis" /></td>
+            <td><input type="checkbox" (change)="editaValor(i, parcela)" class="checkthis" /></td>
             <td>{{meses[i]}}</td>
             <input class="form-control" 
               type="text"

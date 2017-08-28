@@ -18,8 +18,10 @@ export class ConsultaEmpenhoComponent implements OnInit {
    empenhoForm: FormGroup;
    meses: Array<string[]> = new Array;
    check_buttons: boolean[] = Array();
+   check_subitem: boolean[] = Array();
    total_parcelas: number = 0;
    fb: FormBuilder;
+   passo3: boolean = false;
    passo4: boolean = false;
    editingStatus: boolean = false;
    empenho= new Empenho();
@@ -100,10 +102,9 @@ export class ConsultaEmpenhoComponent implements OnInit {
      let total_subitens: string;
      let restante: number;
      let codigo: string;
-     let valor_subitens: string;
+     let descricao_subitem: string;
      let subitens: FormArray = new FormArray([]);
-     let parcelas: FormArray = new FormArray([]);
-     let total_parcelas: number;
+     
      // 
 
      // Empenho>Discriminacao form fields
@@ -114,7 +115,8 @@ export class ConsultaEmpenhoComponent implements OnInit {
      let valor_unitario: number;
      let valor_total: string;
      let descricao: string;
-     // 
+     //
+     let parcelas: FormArray = new FormArray([]);
 
     if(empenho) {
       modalidade = empenho.nr_empenho;
@@ -189,7 +191,7 @@ export class ConsultaEmpenhoComponent implements OnInit {
         valor: [''],
         codigo: [''],
         restante: [0],
-        
+        subitens: subitens
       }),
       discriminacao: this.fb.group({
         item: [''],
@@ -200,8 +202,7 @@ export class ConsultaEmpenhoComponent implements OnInit {
         descricao: [''],
         itens: itens,
       }),
-      subitens: subitens,
-      parcelas: parcelas,
+      parcelas: parcelas
       
     });
 
@@ -219,22 +220,14 @@ export class ConsultaEmpenhoComponent implements OnInit {
         [false],
         [false],
         [false];
+
+    for (var i = 15; i >= 0; i--) {
+      this.check_subitem.push(false);
+    }
+
   }
 
-  addSubItem():void {
-     let codigo_subitem: string;
-     let descricao: string;
-     let valor_subitem: string;
-     
-
-    (<FormArray>this.empenhoForm.controls['subitens']).push(
-      new FormGroup({
-        codigo_subitem: new FormControl(''),
-        descricao: new FormControl(''),
-        valor: new FormControl(''),
-      })
-    ),Validators.minLength(1)
-  }
+  
 
   addItem(group: FormGroup) {
      let num_item: string = group.controls['item'].value;
@@ -257,6 +250,26 @@ export class ConsultaEmpenhoComponent implements OnInit {
     )
   }
 
+  addSubitens() {
+     let codigo_subitem: string;
+     let descricao: string ;
+     let valor_subitem: string  ;
+     
+    if (!this.passo3){
+      for (var i = 10; i >= 0; i--) {
+        (<FormArray>this.empenhoForm.get('item').get('subitens')).push(
+          new FormGroup({
+            codigo_subitem: new FormControl({value: 0, disabled: true}),
+            descricao: new FormControl({value: 'uma descrição', disabled: true}),
+            valor_subitem: new FormControl({value: 0, disabled: true}),
+          })
+        )
+      }
+      this.passo3 = true;
+    }
+    console.log(<FormArray>this.empenhoForm.get('item').get('subitens'));
+  }
+
   addParcelas(){
     let mes: string;
     let valor: number;
@@ -273,6 +286,24 @@ export class ConsultaEmpenhoComponent implements OnInit {
       this.passo4 = true;
     }
     console.log(<FormArray>this.empenhoForm.controls['parcelas']);
+  }
+
+  editaValorSubitem(pos: number, group: FormGroup){
+    if (!this.check_subitem[pos]) {
+      group.controls['valor_subitem'].enable();
+      group.controls['descricao'].enable();
+      this.check_subitem[pos] = true;
+      this.check_subitem[pos], group.controls['valor_subitem'];
+      
+    }else{
+      group.controls['valor_subitem'].disable();
+      group.controls['descricao'].disable();
+    
+      this.check_subitem[pos] = false;
+    }
+
+    // this.atualizaValorNe()
+    
   }
 
   editaValor(pos: number, group: FormGroup){
@@ -317,9 +348,7 @@ export class ConsultaEmpenhoComponent implements OnInit {
 
 
 
-  removeSubItem(pos: number):void{
-       (<FormArray>this.empenhoForm.controls['subitens']).removeAt(pos)
-  }
+  
 
   removeItem(pos: number):void{
        (<FormArray>this.empenhoForm.get('discriminacao').get('itens')).removeAt(pos)
@@ -339,7 +368,7 @@ export class ConsultaEmpenhoComponent implements OnInit {
    }
    get formItens() { return <FormArray>this.empenhoForm.get('discriminacao').get('itens'); }
 
-   get formSubitens() { return <FormArray>this.empenhoForm.get('subitens'); }
+   get formSubitens() { return <FormArray>this.empenhoForm.get('item').get('subitens'); }
 
    get formParcelas() { return <FormArray>this.empenhoForm.get('parcelas'); }
 
